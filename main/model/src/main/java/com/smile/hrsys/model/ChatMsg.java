@@ -10,6 +10,14 @@ public class ChatMsg {
     private Date date;
     private String fromNickname;
 
+    public String getFromNickname() {
+        return fromNickname;
+    }
+
+    public void setFromNickname(String fromNickname) {
+        this.fromNickname = fromNickname;
+    }
+
     public String getFrom() {
         return from;
     }
@@ -40,13 +48,5 @@ public class ChatMsg {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getFromNickname() {
-        return fromNickname;
-    }
-
-    public void setFromNickname(String fromNickname) {
-        this.fromNickname = fromNickname;
     }
 }

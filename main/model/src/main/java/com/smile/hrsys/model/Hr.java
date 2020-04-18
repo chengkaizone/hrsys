@@ -1,5 +1,6 @@
 package com.smile.hrsys.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,8 +30,15 @@ public class Hr implements UserDetails {
     private String userface;
 
     private String remark;
-
     private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;
@@ -72,10 +80,6 @@ public class Hr implements UserDetails {
         this.address = address == null ? null : address.trim();
     }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
@@ -106,12 +110,12 @@ public class Hr implements UserDetails {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
         List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
@@ -143,14 +147,5 @@ public class Hr implements UserDetails {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
 
 }

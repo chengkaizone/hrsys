@@ -33,7 +33,7 @@ public class OpLog {
     }
 
     public void setOperate(String operate) {
-        this.operate = operate;
+        this.operate = operate == null ? null : operate.trim();
     }
 
     public Integer getHrid() {

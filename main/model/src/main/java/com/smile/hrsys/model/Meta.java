@@ -1,6 +1,8 @@
 package com.smile.hrsys.model;
 
-public class Meta {
+import java.io.Serializable;
+
+public class Meta implements Serializable {
 
     private Boolean keepAlive;
 

@@ -1,8 +1,9 @@
 package com.smile.hrsys.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Serializable {
 
     private Integer id;
 
@@ -10,7 +11,7 @@ public class Menu {
 
     private String path;
 
-    private String compoent;
+    private String component;
 
     private String name;
 
@@ -21,10 +22,32 @@ public class Menu {
     private Integer parentId;
 
     private Boolean enabled;
-
     private List<Menu> children;
-
     private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Meta meta) {
+        this.meta = meta;
+    }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
+    }
 
     public Integer getId() {
         return id;
@@ -50,12 +73,12 @@ public class Menu {
         this.path = path;
     }
 
-    public String getCompoent() {
-        return compoent;
+    public String getComponent() {
+        return component;
     }
 
-    public void setCompoent(String compoent) {
-        this.compoent = compoent;
+    public void setComponent(String component) {
+        this.component = component;
     }
 
     public String getName() {
@@ -74,14 +97,6 @@ public class Menu {
         this.iconCls = iconCls;
     }
 
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
-    }
-
     public Integer getParentId() {
         return parentId;
     }
@@ -96,21 +111,5 @@ public class Menu {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public List<Menu> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<Menu> children) {
-        this.children = children;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }

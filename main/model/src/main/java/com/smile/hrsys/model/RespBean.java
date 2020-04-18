@@ -6,9 +6,7 @@ package com.smile.hrsys.model;
 public class RespBean {
 
     private Integer status;
-
     private String msg;
-
     private Object obj;
 
     public static RespBean build() {
@@ -31,8 +29,7 @@ public class RespBean {
         return new RespBean(500, msg, obj);
     }
 
-    public RespBean() {
-
+    private RespBean() {
     }
 
     private RespBean(Integer status, String msg, Object obj) {

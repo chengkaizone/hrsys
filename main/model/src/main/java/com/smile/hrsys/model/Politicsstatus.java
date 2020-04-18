@@ -9,14 +9,6 @@ public class Politicsstatus implements Serializable {
 
     private String name;
 
-    public Politicsstatus() {
-
-    }
-
-    public Politicsstatus(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,7 +19,17 @@ public class Politicsstatus implements Serializable {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(name);
+    }
+
+    public Politicsstatus() {
+
+    }
+
+    public Politicsstatus(String name) {
+
+        this.name = name;
     }
 
     public Integer getId() {
@@ -43,6 +45,6 @@ public class Politicsstatus implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 }

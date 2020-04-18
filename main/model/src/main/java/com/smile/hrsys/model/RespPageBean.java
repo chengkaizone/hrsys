@@ -5,7 +5,6 @@ import java.util.List;
 public class RespPageBean {
 
     private Long total;
-
     private List<?> data;
 
     public Long getTotal() {

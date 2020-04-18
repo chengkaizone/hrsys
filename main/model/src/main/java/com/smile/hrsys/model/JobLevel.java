@@ -14,14 +14,6 @@ public class JobLevel implements Serializable {
 
     private String titleLevel;
 
-    public JobLevel() {
-
-    }
-
-    public JobLevel(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,10 +24,20 @@ public class JobLevel implements Serializable {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(name);
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
+    public JobLevel() {
+
+    }
+
+    public JobLevel(String name) {
+
+        this.name = name;
+    }
+
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date createDate;
 
     private Boolean enabled;

@@ -25,7 +25,7 @@ public class MsgContent {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getMessage() {
@@ -33,7 +33,7 @@ public class MsgContent {
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.message = message == null ? null : message.trim();
     }
 
     public Date getCreatedate() {

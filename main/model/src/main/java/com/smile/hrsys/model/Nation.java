@@ -9,14 +9,6 @@ public class Nation implements Serializable {
 
     private String name;
 
-    public Nation() {
-
-    }
-
-    public Nation(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,9 +17,18 @@ public class Nation implements Serializable {
         return Objects.equals(name, nation.name);
     }
 
+    public Nation() {
+    }
+
+    public Nation(String name) {
+
+        this.name = name;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+
+        return Objects.hash(name);
     }
 
     public Integer getId() {
@@ -43,6 +44,6 @@ public class Nation implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 }

@@ -1,6 +1,8 @@
 package com.smile.hrsys.model;
 
-public class Role {
+import java.io.Serializable;
+
+public class Role implements Serializable {
 
     private Integer id;
 
@@ -21,7 +23,7 @@ public class Role {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getNameZh() {
