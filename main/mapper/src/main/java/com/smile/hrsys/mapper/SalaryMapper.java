@@ -14,7 +14,7 @@ public interface SalaryMapper {
 
     Salary selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeSelectivey(Salary record);
+    int updateByPrimaryKeySelective(Salary record);
 
     int updateByPrimaryKey(Salary record);
 

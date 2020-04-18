@@ -17,43 +17,46 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Excel导入导出工具
+ */
 public class POIUtils {
 
     /**
-     * 导出成excel文件
+     * 导出成Excel文件
      * @param list
      * @return
      */
     public static ResponseEntity<byte[]> employee2Excel(List<Employee> list) {
-        // 1. 创建一个Excel文档
+        //1. 创建一个 Excel 文档
         HSSFWorkbook workbook = new HSSFWorkbook();
-        // 2. 创建文档摘要
+        //2. 创建文档摘要
         workbook.createInformationProperties();
-        // 3. 获取并配置文档信息
+        //3. 获取并配置文档信息
         DocumentSummaryInformation docInfo = workbook.getDocumentSummaryInformation();
-        // 文档类别
+        //文档类别
         docInfo.setCategory("员工信息");
-        // 文档管理员
-        docInfo.setManager("hrsys");
-        // 设置公司信息
-        docInfo.setCompany("www.smile.com");
-        // 4. 获取文档摘要信息
+        //文档管理员
+        docInfo.setManager("javaboy");
+        //设置公司信息
+        docInfo.setCompany("www.javaboy.org");
+        //4. 获取文档摘要信息
         SummaryInformation summInfo = workbook.getSummaryInformation();
-        // 文档标题
+        //文档标题
         summInfo.setTitle("员工信息表");
-        // 文档作者
-        summInfo.setAuthor("hrsys");
+        //文档作者
+        summInfo.setAuthor("javaboy");
         // 文档备注
-        summInfo.setComments("本文档由 hrsys 提供");
-        // 5. 创建样式
-        // 创建标题行的样式
+        summInfo.setComments("本文档由 javaboy 提供");
+        //5. 创建样式
+        //创建标题行的样式
         HSSFCellStyle headerStyle = workbook.createCellStyle();
         headerStyle.setFillForegroundColor(IndexedColors.YELLOW.index);
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         HSSFCellStyle dateCellStyle = workbook.createCellStyle();
         dateCellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/d/yy"));
         HSSFSheet sheet = workbook.createSheet("员工信息表");
-        // 设置列的宽度
+        //设置列的宽度
         sheet.setColumnWidth(0, 5 * 256);
         sheet.setColumnWidth(1, 12 * 256);
         sheet.setColumnWidth(2, 10 * 256);
@@ -79,8 +82,7 @@ public class POIUtils {
         sheet.setColumnWidth(22, 14 * 256);
         sheet.setColumnWidth(23, 15 * 256);
         sheet.setColumnWidth(24, 15 * 256);
-
-        // 6. 创建标题行
+        //6. 创建标题行
         HSSFRow r0 = sheet.createRow(0);
         HSSFCell c0 = r0.createCell(0);
         c0.setCellValue("编号");
@@ -157,7 +159,6 @@ public class POIUtils {
         HSSFCell c24 = r0.createCell(24);
         c24.setCellStyle(headerStyle);
         c24.setCellValue("合同终止日期");
-
         for (int i = 0; i < list.size(); i++) {
             Employee emp = list.get(i);
             HSSFRow row = sheet.createRow(i + 1);
@@ -202,47 +203,53 @@ public class POIUtils {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         HttpHeaders headers = new HttpHeaders();
         try {
-            String filename = new String("员工表.xls".getBytes("UTF-8"), "ISO-8859-1");
-            headers.setContentDispositionFormData("attachment", filename);
+            headers.setContentDispositionFormData("attachment", new String("员工表.xls".getBytes("UTF-8"), "ISO-8859-1"));
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             workbook.write(baos);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return new ResponseEntity<>(baos.toByteArray(), headers, HttpStatus.CREATED);
+        return new ResponseEntity<byte[]>(baos.toByteArray(), headers, HttpStatus.CREATED);
     }
 
-    public static List<Employee> excel2Employee(MultipartFile file, List<Nation> allNations, List<Politicsstatus> allPoliticsstatus,
-                                                List<Department> allDepartments, List<Position> allPositions, List<JobLevel> allJobLevels) {
-
+    /**
+     * Excel 解析成 员工数据集合
+     *
+     * @param file
+     * @param allNations
+     * @param allPoliticsstatus
+     * @param allDepartments
+     * @param allPositions
+     * @param allJobLevels
+     * @return
+     */
+    public static List<Employee> excel2Employee(MultipartFile file, List<Nation> allNations, List<Politicsstatus> allPoliticsstatus, List<Department> allDepartments, List<Position> allPositions, List<JobLevel> allJobLevels) {
         List<Employee> list = new ArrayList<>();
         Employee employee = null;
-
         try {
-            // 1. 创建一个workbook对象
+            //1. 创建一个 workbook 对象
             HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());
-            // 2. 获取workbook中表单的数量
+            //2. 获取 workbook 中表单的数量
             int numberOfSheets = workbook.getNumberOfSheets();
             for (int i = 0; i < numberOfSheets; i++) {
-                // 3. 获取表单
+                //3. 获取表单
                 HSSFSheet sheet = workbook.getSheetAt(i);
-                // 4. 获取表单中的行数
-                int numberOfRows = sheet.getPhysicalNumberOfRows();
-                for (int j = 0; j < numberOfRows; j++) {
-                    // 5. 调货标题行
+                //4. 获取表单中的行数
+                int physicalNumberOfRows = sheet.getPhysicalNumberOfRows();
+                for (int j = 0; j < physicalNumberOfRows; j++) {
+                    //5. 跳过标题行
                     if (j == 0) {
-                        continue;
+                        continue;//跳过标题行
                     }
-                    // 6. 获取行
+                    //6. 获取行
                     HSSFRow row = sheet.getRow(j);
                     if (row == null) {
-                        continue;
+                        continue;//防止数据中间有空行
                     }
-                    // 7. 获取单元格数
-                    int numberOfCells = row.getPhysicalNumberOfCells();
+                    //7. 获取列数
+                    int physicalNumberOfCells = row.getPhysicalNumberOfCells();
                     employee = new Employee();
-                    for (int k = 0; k < numberOfCells; k++) {
+                    for (int k = 0; k < physicalNumberOfCells; k++) {
                         HSSFCell cell = row.getCell(k);
                         switch (cell.getCellType()) {
                             case STRING:
@@ -340,10 +347,10 @@ public class POIUtils {
                     list.add(employee);
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return list;
     }
 

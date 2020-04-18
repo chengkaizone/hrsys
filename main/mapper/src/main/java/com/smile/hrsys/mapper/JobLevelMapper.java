@@ -11,7 +11,7 @@ public interface JobLevelMapper {
 
     int insert(JobLevel record);
 
-    int insertSElective(JobLevel record);
+    int insertSelective(JobLevel record);
 
     JobLevel selectByPrimaryKey(Integer id);
 
@@ -19,7 +19,7 @@ public interface JobLevelMapper {
 
     int updateByPrimaryKey(JobLevel record);
 
-    List<JobLevel> getAllJobLevel();
+    List<JobLevel> getAllJobLevels();
 
     Integer deleteJobLevelsByIds(@Param("ids") Integer[] ids);
 
