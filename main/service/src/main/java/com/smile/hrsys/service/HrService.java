@@ -52,7 +52,7 @@ public class HrService implements UserDetailsService {
         return hrMapper.deleteByPrimaryKey(id);
     }
 
-    public List<Hr> getAllHrsExceptCurrentHt() {
+    public List<Hr> getAllHrsExceptCurrentHr() {
         return hrMapper.getAllHrsExceptCurrentHr(HrUtils.getCurrentHr().getId());
     }
 
