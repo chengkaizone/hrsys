@@ -1,0 +1,34 @@
+server:
+  port: 8081
+  compression:
+    enabled: true
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 88888888
+    url: jdbc:mysql://localhost:3306/hrsys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    publisher-confirms: true
+    publisher-returns: true
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password: 123@456
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+  cache:
+    cache-names: menus_cache
+    redis:
+      time-to-live: 1800s
+fastdfs:
+  nginx:
+    host: http://localhost/
