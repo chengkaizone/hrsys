@@ -6,6 +6,7 @@ import com.smile.hrsys.model.Menu;
 import com.smile.hrsys.utils.HrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,7 @@ public class MenuService {
         return menuMapper.getAllMenusWithRole();
     }
 
+    @Cacheable(key = "#root.methodName")
     public List<Menu> getAllMenus() {
         return menuMapper.getAllMenus();
     }
