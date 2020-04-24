@@ -1,9 +1,11 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Menu;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface MenuMapper {
 
     int deleteByPrimaryKey(Integer id);

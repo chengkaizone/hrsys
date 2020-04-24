@@ -2,7 +2,9 @@ package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.MenuRole;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface MenuRoleMapper {
 
     int deleteByPrimaryKey(Integer id);

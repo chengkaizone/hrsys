@@ -1,7 +1,9 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Appraise;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface AppraiseMapper {
 
     int deleteByPrimaryKey(Integer id);

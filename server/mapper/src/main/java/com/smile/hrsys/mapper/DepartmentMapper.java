@@ -1,9 +1,11 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Department;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface DepartmentMapper {
 
     int deleteByPrimaryKey(Integer id);

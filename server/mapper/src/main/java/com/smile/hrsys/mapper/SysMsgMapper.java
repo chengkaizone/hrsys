@@ -1,7 +1,9 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.SysMsg;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface SysMsgMapper {
 
     int deleteByPrimaryKey(Integer id);

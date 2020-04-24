@@ -1,7 +1,9 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.OpLog;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface OpLogMapper {
 
     int deleteByPrimaryKey(Integer id);

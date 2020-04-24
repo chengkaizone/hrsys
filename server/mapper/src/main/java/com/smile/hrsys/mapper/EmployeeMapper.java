@@ -1,11 +1,14 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Employee;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
+@Component
 public interface EmployeeMapper {
 
     int deleteByPrimaryKey(Integer id);

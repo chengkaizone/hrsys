@@ -2,9 +2,11 @@ package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.JobLevel;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface JobLevelMapper {
 
     int deleteByPrimaryKey(Integer id);

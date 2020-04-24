@@ -1,7 +1,9 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Employeetrain;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface EmployeetrainMapper {
 
     int deleteByPrimaryKey(Integer id);

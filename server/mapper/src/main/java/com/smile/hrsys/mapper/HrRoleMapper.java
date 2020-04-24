@@ -2,7 +2,9 @@ package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.HrRole;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface HrRoleMapper {
 
     int deleteByPrimaryKey(Integer id);

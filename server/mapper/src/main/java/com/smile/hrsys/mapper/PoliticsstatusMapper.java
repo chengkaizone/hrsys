@@ -1,9 +1,11 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Politicsstatus;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface PoliticsstatusMapper {
 
     int deleteByPrimaryKey(Integer id);

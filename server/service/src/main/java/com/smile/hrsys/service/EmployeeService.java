@@ -54,7 +54,7 @@ public class EmployeeService {
         employee.setContractTerm(Double.parseDouble(decimalFormat.format(month / 12)));
         int result = employeeMapper.insertSelective(employee);
         if (result == 1) {
-            Employee emp = employeeMapper.getEmployeeById(employee.getId());
+            Employee emp = employeeMapper. getEmployeeById(employee.getId());
             // 生成消息的唯一ID
             String msgId = UUID.randomUUID().toString();
             MailSendLog mailSendLog = new MailSendLog();

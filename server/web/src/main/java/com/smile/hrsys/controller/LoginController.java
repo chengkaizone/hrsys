@@ -2,8 +2,7 @@ package com.smile.hrsys.controller;
 
 import com.smile.hrsys.config.VerificationCode;
 import com.smile.hrsys.model.RespBean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

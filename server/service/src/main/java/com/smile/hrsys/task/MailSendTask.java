@@ -24,7 +24,15 @@ public class MailSendTask {
     @Autowired
     EmployeeService employeeService;
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    /**
+     * spring自带定时任务
+     * cron = 秒(0~59) 分(0~59) 时(0~23) 天(0~28/29/30/31) 月(0~11) 年(1970~2099)
+     * "/"用来指定数字的增量
+     * "?"仅仅被用于天(月)和天(星期)两个子表达式，表示不指定值
+     * "L"仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写
+     * 这里每60秒触发一次
+     */
+    @Scheduled(cron = "0/60 * * * * ?")
     public void mailResendTask() {
 
         List<MailSendLog> logs = mailSendLogService.getMailSendLogsByStatus();

@@ -10,6 +10,7 @@ public class MailSendLog {
     private Integer status;
     private String routeKey;
     private String exchange;
+    // 投递次数
     private Integer count;
     private Date tryTime;
     private Date createTime;

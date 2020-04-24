@@ -50,6 +50,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <!--<version>1.2.41</version>-->
+            <version>1.2.68</version>
+        </dependency>
+
         <!-- 除去web层内置的tomcat依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

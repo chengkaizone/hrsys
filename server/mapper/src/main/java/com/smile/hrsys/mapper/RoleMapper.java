@@ -1,9 +1,11 @@
 package com.smile.hrsys.mapper;
 
 import com.smile.hrsys.model.Role;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface RoleMapper {
 
     int deleteByPrimaryKey(Integer id);
