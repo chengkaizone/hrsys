@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.08 (32 bit)
-MySQL - 8.0.18 : Database - vhr
+MySQL - 8.0.18 : Database - hrsys
 *********************************************************************
 */
 

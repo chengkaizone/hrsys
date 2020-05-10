@@ -1,11 +1,13 @@
 import com.alibaba.fastjson.JSON;
 import com.smile.hrsys.HrsysApplication;
 import com.smile.hrsys.test.Book;
+import com.smile.hrsys.test.TestController;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.MediaType;
@@ -20,7 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = HrsysApplication.class)
+@SpringBootTest(classes = HrsysApplication.class) // 测试应用上下文
+//@WebMvcTest(TestController.class) // 测试单个controller
 public class AppTest {
 
     @Autowired
