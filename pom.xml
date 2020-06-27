@@ -6,7 +6,7 @@
 
     <groupId>com.smile</groupId>
     <artifactId>hrsys</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>1.0.0</version>
 
     <name>hrsys</name>
