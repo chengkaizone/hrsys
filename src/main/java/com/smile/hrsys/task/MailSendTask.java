@@ -32,7 +32,7 @@ public class MailSendTask {
      * "L"仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写
      * 这里每60秒触发一次
      */
-    @Scheduled(cron = "0/60 * * * * ?")
+    //@Scheduled(cron = "0/60 * * * * ?")
     public void mailResendTask() {
 
         List<MailSendLog> logs = mailSendLogService.getMailSendLogsByStatus();

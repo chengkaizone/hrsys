@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * 登录验证
@@ -65,6 +66,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
      * @param verify_code
      */
     public void checkCode(HttpServletResponse resp, String code, String verify_code) {
+        System.out.println("------> " + code + " | " + verify_code + "|");
         if (code == null || verify_code == null || "".equals(code)
                 || !verify_code.toLowerCase().equals(code.toLowerCase())) {
             throw new AuthenticationServiceException("验证码不正确！");
